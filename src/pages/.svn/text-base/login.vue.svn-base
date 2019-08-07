@@ -1,0 +1,116 @@
+<template>
+    <div class="hj-login">
+        <div class="hj-login-form" @keyup.enter="hjSubmite('user')">
+            <div class="hj-login-title">团购管理系统V1.0</div>
+            <el-form
+                ref="user"
+                label-width="80px"
+                :model="user"
+                :rules="rules2">
+                <el-form-item label="名称" prop="name">
+                    <el-input type="text" placeholder="请输入登录账号" class="hj-ipt" v-model="user.name"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="pas">
+                    <el-input type="password" placeholder="请输入登录密码" class="hj-ipt" v-model="user.pas"></el-input>
+                </el-form-item>
+                <el-button class="hj-btn" @click="hjSubmite('user')">登录</el-button>
+            </el-form>
+        </div>
+    </div>
+</template>
+<script>
+    import {validateNull, validateLength, validateSpace, validateSpecial} from '../assets/javascript/validate.js';
+    export default {
+        name: "login",
+        data() {
+            return {
+                user: {
+                    name: '',
+                    pas: ''
+                },
+                rules2: {   // 表单验条件
+                    name: [
+                        {validator: validateNull, trigger: 'blur'},
+                        {validator: validateLength, trigger: 'blur'},
+                        {validator: validateSpace, trigger: 'blur'},
+                        {validator: validateSpecial, trigger: 'blur'}
+                    ],
+                    pas: [
+                        {validator: validateNull, trigger: 'blur'},
+                        {validator: validateLength, trigger: 'blur'},
+                        {validator: validateSpace, trigger: 'blur'}
+                    ]
+                }
+            }
+        },
+        methods: {
+            hjSubmite(formName) {
+                // 管理登陆方法.
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        /*this._ajax('user/adminLogin', {
+                            account_number: this.user.name,
+                            pwd: this.user.pas
+                        }, data => {
+                            console.log(data)
+                            window.sessionStorage.setItem('bear', JSON.stringify(data));
+                            this.$router.push({name: 'Home'});
+                        })*/
+                        this.$router.push({name: 'Home'});
+                    } else {
+                        return false;
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+<style scoped>
+    .hj-login {
+        width: 100%;
+        height: 100%;
+        background-color: #e4ddf77a;
+    }
+
+    .hj-login-form {
+        background-color: #fff;
+        padding: 40px;
+        width: 360px;
+        height: 260px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        margin-top: -200px;
+        margin-left: -200px;
+        border-radius: 8px;
+        -webkit-box-shadow: 6px 3px 3px 6px #adadad;
+        -moz-box-shadow: 6px 3px 3px 6px #adadad;
+        box-shadow: 6px 3px 3px 6px #adadad;
+    }
+
+    .hj-login-title {
+        width: 100%;
+        height: 80px;
+        background: url('../assets/images/hj-login.jpg') no-repeat center center;
+        background-size: 100% 100%;
+        border-radius: 6px;
+        margin-bottom: 22px;
+        line-height: 80px;
+        text-align: center;
+        font-size: 26px;
+        color: #fff;
+    }
+
+    .hj-btn {
+        display: block;
+        margin: 0 auto;
+        width: 120px;
+        background-color: #4d4d4d;
+        color: #fff;
+    }
+
+    .hj-ipt {
+        width: 90%;
+    }
+</style>

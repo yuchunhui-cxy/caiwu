@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/tuangou/!svn/ver/13/H5/groupBuy/test/e2e
+END
+nightwatch.conf.js
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/tuangou/!svn/ver/13/H5/groupBuy/test/e2e/nightwatch.conf.js
+END
+runner.js
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/tuangou/!svn/ver/13/H5/groupBuy/test/e2e/runner.js
+END

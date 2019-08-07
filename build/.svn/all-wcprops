@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build
+END
+vue-loader.conf.js
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/vue-loader.conf.js
+END
+logo.png
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/logo.png
+END
+webpack.base.conf.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/webpack.base.conf.js
+END
+webpack.dev.conf.js
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/webpack.dev.conf.js
+END
+build.js
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/build.js
+END
+utils.js
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/utils.js
+END
+check-versions.js
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/check-versions.js
+END
+webpack.prod.conf.js
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/tuangou/!svn/ver/13/H5/groupBuy/build/webpack.prod.conf.js
+END
