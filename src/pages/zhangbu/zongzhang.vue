@@ -4,7 +4,9 @@
             <div style="font-size: 30px;color: #1C2023;text-align: center;">总账</div>
             <div style="border: 1px solid #F8F8FF;padding: 2vw;margin-top: 2vh">
                 <div style="display: flex;justify-content: flex-end">
-                    <el-button type="warning" @click="exportFunc('id','总账')">导出</el-button>
+                    <!--<el-button type="warning" @click="exportFunc('id','总账')">导出</el-button>-->
+                    <el-button type="warning" @click="daochu">导出</el-button>
+
                     <el-date-picker
                             @change ="change_date"
                             value-format="yyyy-MM"
@@ -100,6 +102,18 @@
             this.list()
         },
         methods: {
+            daochu(){
+                this._ajax('zip/userAccountBook1',{
+                    uuid:this.uuid,
+                    workAccountId:this.accountId,
+                    timeMonth:this.date,
+
+
+                }, msg => {
+
+                })
+            },
+
             change_date(){
                 this.dangqianye = 1
                 this.list()

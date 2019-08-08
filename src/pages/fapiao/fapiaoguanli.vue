@@ -15,7 +15,9 @@
                                 <el-button type="warning" @click="del_many">删除</el-button>
                             </div>
                             <div class="right">
-                                <el-button type="warning" @click="exportFunc('id','发票报表')">导出</el-button>
+                                <!--<el-button type="warning" @click="exportFunc('id','发票报表')">导出</el-button>-->
+                                <el-button type="warning" @click="daochu">导出</el-button>
+
                             </div>
                             <div class="right">
                                 <el-form-item label="方向">
@@ -265,6 +267,15 @@
             })
         },
         methods: {
+            daochu(){
+                this._ajax('zip/selectAllInvoice1',{
+                    uuid:this.uuid,
+                    workAccountId:this.accountId,
+                    ...this.form
+                }, msg => {
+
+                })
+            },
             shengcheng_pingzheng(invoiceId){
                 this.$router.push({path:'/home/pingzhengguanli/add_pingzheng',query:{invoiceId,"from":'fapiaoguanli'}})
 

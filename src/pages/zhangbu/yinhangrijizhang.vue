@@ -15,7 +15,9 @@
                         </el-select>
                     </div>
                     <div style="display: flex;align-items: center">
-                        <el-button type="warning" @click="exportFunc('id','银行日记账')">导出</el-button>
+                        <!--<el-button type="warning" @click="exportFunc('id','银行日记账')">导出</el-button>-->
+                        <el-button type="warning" @click="daochu">导出</el-button>
+
                         <el-date-picker
                                 @change ="change_date"
                                 value-format="yyyy-MM"
@@ -135,6 +137,17 @@
             }
         },
         methods: {
+            daochu(){
+                this._ajax('zip/userAllBooks',{
+                    uuid:this.uuid,
+                    workAccountId:this.accountId,
+                    timeMonth:this.date,
+                    subjectNum:this.code
+                }, msg => {
+
+                })
+            },
+
             change_yinhang(){
                 this.dangqianye = 1
                 this.list()

@@ -1,5 +1,5 @@
 <template>
-    <div style="min-width: 1000px;border: 1px solid red;overflow: auto;margin-bottom: 10vh">
+    <div style="margin-bottom: 10vh">
         <!--<div id="div" style="width: 100px;height: 100px;background: red;position: absolute;z-index: 101;">-->
             <!--<button style="position: absolute;right: 5px;bottom: 5px;">111</button>-->
         <!--</div>-->

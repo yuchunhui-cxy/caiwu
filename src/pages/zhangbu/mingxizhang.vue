@@ -6,7 +6,9 @@
             <div style="border: 1px solid #F8F8FF;padding: 2vh 2vw;margin-top: 2vh">
 
                 <div style="display: flex;justify-content: flex-end">
-                    <el-button type="warning" @click="exportFunc('id','明细账')">导出</el-button>
+                    <!--<el-button type="warning" @click="exportFunc('id','明细账')">导出</el-button>-->
+                    <el-button type="warning" @click="daochu">导出</el-button>
+
                     <el-date-picker
                             @change ="change_date"
                             value-format="yyyy-MM"
@@ -250,6 +252,19 @@
             }
         },
         methods: {
+            daochu(){
+                this._ajax('zip/userDetailsAccount',{
+                    uuid:this.uuid,
+                    workAccountId:this.accountId,
+                    timeMonth:this.date,
+                    subjectNum:this.name
+
+
+                }, msg => {
+
+                })
+            },
+
             change_kemu(data,index){
                 this.i = index
 
@@ -279,7 +294,7 @@
                         page:this.dangqianye,
                         pageSize:this.pageSize + 1,
                         timeMonth:this.date,
-                        subjectNum:msg[0].accountant_code
+                        subjectNum:msg[0].accountant_code,
                     }, msg => {
                         this.total = Number(msg[msg.length - 1].size)
 
@@ -341,7 +356,8 @@
                 this.list()
             },
             list(){
-                this._ajax('userHomePage/selectDetailsAccount',{
+                this.tableData = []
+                this._ajax('common/selectDetailsAccount',{
                     uuid:this.uuid,
                     workAccountId:this.accountId,
                     // uuid:"5d0afbe77f1342739c5f6d8d84ad6d67",
@@ -349,8 +365,49 @@
                     page:this.dangqianye,
                     pageSize:this.pageSize + 1,
                     timeMonth:this.date,
-                    name:this.name
+                    subjectNum:this.name
                 }, msg => {
+                    this.total = Number(msg[msg.length - 1].size)
+
+                    msg.pop()
+
+                    function compare(property){
+                        return function(a,b){
+                            var value1 = a[property];
+                            var value2 = b[property];
+                            return value1 - value2;
+                        }
+                    }
+                    msg.sort(compare('type'))
+
+                    let y = this.date.split('-')[0]
+                    let m = this.date.split('-')[1]
+
+                    var lastDay= new Date(y,m,0);
+                    var year = lastDay.getFullYear();
+                    var month = lastDay.getMonth() + 1;
+                    month = month < 10 ? '0'+ month : month;
+                    var day = lastDay.getDate();
+                    day = day < 10 ? '0'+day : day;
+
+                    const x =  msg.find(item=>{
+                        return item.type == 1
+                    })
+
+                    let a = x.flag
+
+                    msg.map(item=>{
+                        item.flag = a
+                        if(item.type == 1){
+                            item.certificateTime = year + '-' + month + "-" + '01'
+                        }else if(item.type == 3 || item.type == 4){
+                            item.certificateTime = year + '-' + month + "-" + day
+                        }
+                    })
+
+
+                    this.tableData = msg
+
 
                     // this._message(1,"tableData成功")
                 })

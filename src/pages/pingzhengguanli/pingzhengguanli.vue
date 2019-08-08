@@ -16,7 +16,9 @@
                                 <el-button type="warning" @click="del_many">批量删除</el-button>
                             </div>
                             <div class="right">
-                                <el-button type="warning" @click="exportFunc('id','凭证管理报表')">导出</el-button>
+                                <!--<el-button type="warning" @click="exportFunc('id','凭证管理报表')">导出</el-button>-->
+                                <el-button type="warning" @click="daochu">导出</el-button>
+
                             </div>
                             <div class="right">
                                 <el-form-item label="摘要">
@@ -231,6 +233,15 @@
             this.list()
         },
         methods: {
+            daochu(){
+                this._ajax('zip/selectAllCertificate',{
+                    uuid:this.uuid,
+                    workAccountId:this.accountId,
+                    ...this.form
+                }, msg => {
+
+                })
+            },
             // 查看发票
             look_fapiao(invoiceId){
                 this.$router.push({path:'/home/pingzhengguanli/look_fapiao',query:{invoiceId}})
